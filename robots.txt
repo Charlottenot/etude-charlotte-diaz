@@ -1,0 +1,12 @@
+# ══════════════════════════════════════════════════════════════
+# Office notarial Charlotte Diaz — Roanne
+#
+# ÉTAT ACTUEL : PORTE FERMÉE (phase de relecture privée)
+# Les moteurs de recherche sont priés de ne rien référencer.
+#
+# 👉 LE JOUR DE LA NOMINATION : voir JOUR_J.md
+#    (il faudra remplacer "Disallow: /" par "Allow: /")
+# ══════════════════════════════════════════════════════════════
+
+User-agent: *
+Disallow: /
