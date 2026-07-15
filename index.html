@@ -814,6 +814,24 @@
   @media(max-width:680px){.page-band{padding:36px 18px 32px}}
 
 /* ══════════════════════════════════════════════════════════════════════
+   ÉCHELLE D'AFFICHAGE — ORDINATEUR        (ajouté le 15/07/2026)
+
+   Le site a été conçu en le regardant à 90% dans le navigateur.
+   C'est CE rendu-là qui plaît. À 100% tout paraissait trop gros.
+   On fige donc le 90% : le visiteur voit d'emblée le bon rendu,
+   sans avoir à toucher à sa loupe.
+
+   👉 POUR AJUSTER : changer la seule valeur "zoom" ci-dessous.
+      0.85 = plus petit   |   0.90 = actuel   |   1 = taille d'origine
+
+   Ne s'applique QU'À L'ORDINATEUR : sur téléphone, le texte doit
+   rester lisible, c'est le bloc mobile plus bas qui commande.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(min-width:901px){
+  html{zoom:0.90}
+}
+
+/* ══════════════════════════════════════════════════════════════════════
    VERSION MOBILE  ·  iOS + Android          (ajouté le 15/07/2026)
    Ce bloc est volontairement le DERNIER du CSS : il a le dernier mot.
    Ne rien mettre après, sinon ça écrase ces règles.
