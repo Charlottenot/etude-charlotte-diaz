@@ -812,6 +812,118 @@
   .page-band.reveal-band{animation:bandIn .7s cubic-bezier(.2,.7,.2,1)}
   @keyframes bandIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
   @media(max-width:680px){.page-band{padding:36px 18px 32px}}
+
+/* ══════════════════════════════════════════════════════════════════════
+   VERSION MOBILE  ·  iOS + Android          (ajouté le 15/07/2026)
+   Ce bloc est volontairement le DERNIER du CSS : il a le dernier mot.
+   Ne rien mettre après, sinon ça écrase ces règles.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ---- 1. Garde anti-débordement (aucun scroll horizontal, jamais) ---- */
+@media(max-width:900px){
+  html,body{max-width:100%;overflow-x:hidden}
+  img,video,iframe,table,pre{max-width:100%}
+  /* Les mots à rallonge (emails, URLs) ne poussent plus la page */
+  body,p,a,li,h1,h2,h3,h4,span,div{overflow-wrap:break-word;word-break:normal}
+  .wrap{width:100%;max-width:100%}
+}
+
+/* ---- 2. Encoche iPhone : on respecte les zones sûres ---- */
+@supports(padding:max(0px)){
+  @media(max-width:900px){
+    .wrap,.nav-inner,.bcoord{
+      padding-left:max(18px,env(safe-area-inset-left));
+      padding-right:max(18px,env(safe-area-inset-right));
+    }
+    footer{padding-bottom:max(24px,env(safe-area-inset-bottom))}
+  }
+}
+
+@media(max-width:680px){
+  /* ---- 3. EN-TÊTE : c'est lui qui débordait ---- */
+  header.nav{position:fixed}
+  .nav-inner{height:72px;padding:0 16px;gap:.6rem}
+  .brand{gap:.6rem;min-width:0;flex:1}
+  .monogram{width:38px;height:38px}
+  .brand .bn{font-size:1.15rem}
+  .brand .bs{font-size:.58rem;letter-spacing:.14em;margin-top:.15rem}
+  .brand .bsucc{font-size:.6rem;margin-top:.1rem}
+  .nav-logos-right{display:none}
+
+  /* La ligne e-mail + téléphone : compacte, centrée, elle passe à la ligne */
+  .bcoord{
+    justify-content:center;gap:.5rem 1rem;flex-wrap:wrap;
+    padding:.35rem 12px .45rem;font-size:.7rem;letter-spacing:0;
+  }
+  .bcoord svg{width:12px;height:12px}
+  .bcoord a{gap:.3rem;min-height:auto}
+
+  /* ---- 4. Menu : ancré SOUS le header, quelle que soit sa hauteur ---- */
+  nav.links{
+    position:absolute;top:100%;left:0;right:0;inset:auto;
+    max-height:calc(100dvh - 120px);overflow-y:auto;-webkit-overflow-scrolling:touch;
+    background:var(--cream);flex-direction:column;align-items:stretch;
+    padding:.5rem 18px 1.5rem;transform:translateY(-135%);
+  }
+  nav.links.open{transform:translateY(0)}
+  /* Zones tactiles : minimum 44px (recommandation Apple) */
+  nav.links a{min-height:48px;display:flex;align-items:center;font-size:1rem}
+  .nav-drop-trigger{min-height:48px}
+  .nav-drop-menu a{min-height:44px}
+  .burger{min-width:44px;min-height:44px;align-items:center;justify-content:center;flex-shrink:0}
+
+  /* ---- 5. Lecture : le justifié fait des trous sur un écran étroit ---- */
+  p,.lead{text-align:left;hyphens:auto;-webkit-hyphens:auto}
+  h1{font-size:2rem;line-height:1.15}
+  h2{font-size:1.55rem}
+  .sec-head h2,.tab-dup{font-size:1.5rem}
+
+  /* ---- 6. Accueil ---- */
+  .hero{padding:96px 0 56px;min-height:auto}
+  .hero-video{height:100%}
+  .hero-cta{flex-direction:column;align-items:stretch;gap:.7rem}
+  .hero-cta .btn{width:100%;min-height:50px}
+  html{scroll-padding-top:118px}
+
+  /* ---- 7. Boutons : assez gros pour un pouce ---- */
+  .btn{min-height:48px;padding:.85rem 1.3rem;font-size:.8rem}
+
+  /* ---- 8. Formulaire : 16px minimum, sinon iOS zoome tout seul ---- */
+  .field input,.field select,.field textarea{
+    font-size:16px;min-height:48px;padding:.75rem .9rem;
+  }
+  .field textarea{min-height:120px}
+
+  /* ---- 9. Photos de la colonne Étude ---- */
+  .etude-col{margin-top:32px;gap:20px}
+  .etude-aside{padding:1.5rem}
+
+  /* ---- 10. Divers ---- */
+  .promo-pills{gap:.45rem}
+  .promo-pill{font-size:.68rem;padding:.35rem .7rem}
+  .map{height:260px}
+  .ornament{font-size:1.2rem}
+}
+
+/* ---- 11. Très petits écrans (iPhone SE ~375px et moins) ---- */
+@media(max-width:400px){
+  .brand .bn{font-size:1rem}
+  .brand .bsucc{display:none}
+  .bcoord{font-size:.64rem;gap:.3rem .7rem}
+  .nav-inner{height:66px;padding:0 12px}
+  nav.links{top:100%}
+  h1{font-size:1.7rem}
+  .help-grid{grid-template-columns:1fr}
+}
+
+/* ---- 12. Écran tactile : pas de survol, mais un retour au toucher ---- */
+@media(hover:none){
+  .etude-photo:hover img{transform:none}
+  .btn:active{transform:scale(.97)}
+  nav.links a:active{background:rgba(169,133,78,.08)}
+  /* Le menu déroulant s'ouvre au clic, pas au survol */
+  .nav-drop:hover .nav-drop-menu{opacity:1;visibility:visible}
+}
 </style>
 </head>
 <body>
