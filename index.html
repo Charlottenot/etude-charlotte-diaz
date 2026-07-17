@@ -642,7 +642,9 @@
     nav.links .btn{margin-top:1rem;width:100%;justify-content:center}
     .nav-drop{flex-direction:column;align-items:flex-start;width:100%}
     .nav-drop-trigger{width:100%;padding:.95rem 0;border-bottom:1px solid var(--line)}
-    .nav-drop-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;padding:0 0 0 1rem;margin-top:0;min-width:0;width:100%}
+    .nav-drop-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;padding:0 0 0 1rem;margin-top:0;min-width:0;width:100%;max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .nav-drop.open .nav-drop-menu{max-height:320px}
+    .nav-drop.open .nav-drop-caret{transform:rotate(180deg)}
     .nav-drop-menu a{padding:.8rem 0;border-bottom:1px solid var(--line);font-size:.88rem}
     .burger{display:flex}
     .nav-cta-desktop{display:none}
@@ -2323,7 +2325,12 @@
   // mobile menu
   const burger=document.getElementById('burger'),links=document.getElementById('links');
   burger.addEventListener('click',()=>links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+  // sur mobile, "L'Étude" se déplie/replie au toucher (et ne ferme pas tout le menu)
+  const isMobileNav=()=>window.matchMedia('(max-width:680px)').matches;
+  links.querySelectorAll('.nav-drop-trigger').forEach(t=>t.addEventListener('click',e=>{
+    if(isMobileNav()){e.preventDefault();t.closest('.nav-drop').classList.toggle('open');}
+  }));
+  links.querySelectorAll('a:not(.nav-drop-trigger)').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
 
   // FAQ accordions
   document.querySelectorAll('.faq-q').forEach(q=>{
