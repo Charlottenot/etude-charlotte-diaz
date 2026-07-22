@@ -2,6 +2,16 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
+<script>
+/* Si la page s'ouvre avec une ancre (#immobilier, #histoire...), on la met de côté
+   AVANT que le navigateur ne saute de lui-même vers la section — ce saut cachait le
+   bandeau-titre, surtout sur téléphone. Le grand script en bas de page la récupère
+   dans window.vueDemandee et affiche le bon onglet, en haut de page. */
+if(location.hash&&location.hash.length>1){
+  window.vueDemandee=location.hash.replace('#','');
+  history.replaceState(null,'',location.pathname+location.search);
+}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Notaire à Roanne (42) — Me Charlotte Diaz, successeur de Me Yves Suchet</title>
 <meta name="description" content="Notaire à Roanne (42300), Maître Charlotte Diaz succède à Maître Yves Suchet à la tête de l'étude du 5 rue Paul Bert. Achat et vente immobilière, règlement de succession, donation, testament, contrat de mariage, droit de la famille et des entreprises. Du Roannais à l'Ouest lyonnais et à Saint-Germain-l'Espinasse, un notaire disponible et réactif, à l'écoute dès les premières questions." />
@@ -2590,7 +2600,8 @@
     band.id='pageBand';
     if(header&&header.parentNode){header.parentNode.insertBefore(band,header.nextSibling);}
     function current(){
-      var h=(location.hash||'#accueil').replace('#','');
+      /* l'ancre mise de côté par le petit script du haut de page sert de secours */
+      var h=(location.hash||'').replace('#','')||window.vueDemandee||'accueil';
       return views[h]?h:'accueil';
     }
     function paint(view){
@@ -2625,7 +2636,11 @@
       if(ctaBand){ctaBand.style.background=th.cta;}
       if(footerEl){footerEl.style.background=th.foot;}
       paint(view);
+      /* Remonter en haut de page — deux fois : tout de suite, puis juste après,
+         car sur téléphone le navigateur saute de lui-même vers la section (ancre)
+         APRÈS ce premier scroll, ce qui cachait le bandeau-titre. */
       window.scrollTo(0,0);
+      setTimeout(function(){window.scrollTo(0,0);},60);
       /* rendre visibles les éléments animés de la rubrique affichée */
       setTimeout(function(){
         document.querySelectorAll('.reveal').forEach(function(r){
@@ -2635,6 +2650,10 @@
     }
     window.addEventListener('hashchange',function(){show(current())});
     window.addEventListener('resize',function(){paint(current())});
+    /* Le navigateur ne doit ni restaurer un ancien défilement, ni sauter vers l'ancre
+       au chargement : on reprend la main pour que le bandeau-titre reste visible. */
+    if('scrollRestoration' in history){history.scrollRestoration='manual';}
+    window.addEventListener('load',function(){setTimeout(function(){window.scrollTo(0,0);},80);});
     show(current());
   })();
 </script>
