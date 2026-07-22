@@ -278,7 +278,14 @@
   .presentation-filet span{display:block;width:74px;height:1px;background:linear-gradient(90deg,transparent,var(--brass))}
   .presentation-filet span:last-child{background:linear-gradient(270deg,transparent,var(--brass))}
   .presentation-sub{font-family:var(--serif);font-style:normal;font-size:1.12rem;color:var(--ink-soft);margin:0;text-align:center}
-  @media(max-width:680px){.presentation{padding-top:2.4rem}.presentation-plume{width:56px;height:56px}}
+  @media(max-width:680px){
+    .presentation{padding-top:2.4rem}
+    .presentation-plume{width:56px;height:56px}
+    /* Sur téléphone : on laisse le nom se répartir naturellement (le retour à la ligne
+       forcé du grand écran donnait des lignes déséquilibrées) */
+    .presentation-nom br{display:none}
+    .presentation-nom{font-size:1.65rem}
+  }
   .help-panel{
     margin-top:8px;position:relative;z-index:5;
   }
