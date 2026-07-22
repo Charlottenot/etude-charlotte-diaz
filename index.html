@@ -2648,7 +2648,21 @@ if(location.hash&&location.hash.length>1){
         });
       },60);
     }
+    /* ARME DÉFINITIVE contre le saut d'ancre (iPhone surtout) : on intercepte chaque
+       clic sur un lien interne (#immobilier, #histoire...) AVANT le navigateur.
+       pushState change l'adresse SANS déclencher le saut natif — puis on affiche
+       l'onglet nous-mêmes, proprement, en haut de page. */
+    document.addEventListener('click',function(e){
+      var a=e.target.closest?e.target.closest('a[href^="#"]'):null;
+      if(!a)return;
+      var id=(a.getAttribute('href')||'').slice(1);
+      if(!id||!document.getElementById(id))return;
+      e.preventDefault();
+      history.pushState(null,'','#'+id);
+      show(current());
+    });
     window.addEventListener('hashchange',function(){show(current())});
+    window.addEventListener('popstate',function(){show(current())});
     window.addEventListener('resize',function(){paint(current())});
     /* Le navigateur ne doit ni restaurer un ancien défilement, ni sauter vers l'ancre
        au chargement : on reprend la main pour que le bandeau-titre reste visible. */
