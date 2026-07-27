@@ -1006,8 +1006,16 @@ if(location.hash&&location.hash.length>1){
   /* Idem pour les bandeaux de titre des autres onglets */
   .page-band{padding-top:120px}
 
-  /* ---- 7. Boutons : assez gros pour un pouce ---- */
-  .btn{min-height:48px;padding:.85rem 1.3rem;font-size:.8rem}
+  /* ---- 7. Boutons : assez gros pour un pouce ----
+     Les boutons aux textes longs (ex : "Toutes les actualités des notaires
+     Ain–Loire–Rhône") doivent pouvoir passer à la ligne au lieu d'être coupés
+     par le bord de l'écran. Cette règle était auparavant réservée aux écrans
+     de moins de 400px : les grands iPhone (430px) passaient à côté. (27/07/2026) */
+  .btn{
+    min-height:48px;padding:.85rem 1.3rem;font-size:.8rem;
+    white-space:normal;max-width:100%;text-align:center;line-height:1.35;
+    overflow-wrap:anywhere;word-break:break-word;
+  }
 
   /* ---- 8. Formulaire : 16px minimum, sinon iOS zoome tout seul ---- */
   .field input,.field select,.field textarea{
