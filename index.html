@@ -1039,7 +1039,7 @@ if(location.hash&&location.hash.length>1){
   .help-grid{grid-template-columns:1fr}
   /* Sur téléphone, les boutons aux textes longs (ex : visioconférence) doivent
      pouvoir passer à la ligne au lieu de déborder de l'écran (audit 22/07/2026) */
-  .btn{white-space:normal;max-width:100%;text-align:center;line-height:1.35}
+  .btn{white-space:normal;max-width:100%;text-align:center;line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
 }
 
 /* ---- 12. Écran tactile : pas de survol, mais un retour au toucher ---- */
