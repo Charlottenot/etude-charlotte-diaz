@@ -5,8 +5,15 @@
 # Les moteurs de recherche sont priés de ne rien référencer.
 #
 # 👉 LE JOUR DE LA NOMINATION : voir JOUR_J.md
-#    (il faudra remplacer "Disallow: /" par "Allow: /")
+#    (il faudra remplacer "Disallow: /" par "Disallow:" — la ligne
+#     vide qui veut dire « rien n'est interdit »)
+#    ATTENTION : ce verrou-ci ne suffit pas seul. Il faut AUSSI
+#    changer la balise "robots" dans index.html. Les deux ensemble.
 # ══════════════════════════════════════════════════════════════
 
 User-agent: *
 Disallow: /
+
+# Plan du site (créé le 09/09/2026). Il sera lu par Google
+# le jour où la porte ci-dessus sera ouverte.
+Sitemap: https://etude-charlotte-diaz.vercel.app/sitemap.xml
