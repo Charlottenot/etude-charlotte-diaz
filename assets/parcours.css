@@ -1,0 +1,86 @@
+/* Axes validés le 10 septembre : accès directs, lecture et gestes tactiles. */
+.btn-primary,.btn-primary:hover { color:#fff; }
+.map::before { display:none; }
+.map iframe { position:static; }
+.hero-video-silhouettes { filter: blur(1.5px) brightness(.88) saturate(.85); }
+.help { padding-top: 0; }
+.help-panel { padding-top: 32px; }
+.help-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.home-shortcuts,.contact-actions { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px 24px; margin-block:24px; }
+.home-shortcuts a { display:inline-flex; align-items:center; min-height:44px; text-decoration:underline; text-underline-offset:4px; }
+.transmission { margin-top:32px; }
+.contact-hours { text-align:center; margin:24px auto; line-height:1.8; }
+#contact .contact-info-grid { margin-top:32px!important; }
+.tools-intro { text-align:center; margin:0 auto 24px; max-width:640px; }
+.tools-group,.visio-details { border:1px solid var(--line); border-radius:8px; margin-top:20px; background:var(--paper); }
+.tools-group summary,.visio-details summary { padding:20px 24px; min-height:48px; cursor:pointer; color:var(--ink); font-weight:600; line-height:1.6; }
+.tools-group .outils-grid,.visio-content { padding:0 24px 24px; }
+.tools-group .outils-grid { margin:0; }
+.tools-group .outil-card { min-width:0; }
+.visio-details .sec-head { margin-top:24px; }
+#visio { padding-top:0; }
+body[data-view="rdv"] #ctaBand { display:none; }
+.field label { font-size:.86rem; }
+.f-aide,.f-rgpd,.form-note { font-size:.94rem; line-height:1.7; }
+.map-placeholder p,.map-placeholder a { font-size:1rem; }
+.map-placeholder a { display:inline-flex; min-height:44px; align-items:center; }
+.bcoord a { min-height:44px; }
+.foot-col a { display:flex; align-items:center; min-height:44px; }
+.foot-navline a { display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; }
+.foot-social .soc { width:44px; height:44px; }
+.outil-link { display:flex; align-items:center; min-height:44px; }
+.breadcrumb { display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding-top:18px; font-size:.95rem; }
+.breadcrumb a { display:inline-flex; align-items:center; min-height:44px; text-decoration:underline; }
+body[data-page] .page-band { padding-top:calc(var(--header-height) + 44px); }
+body[data-page="successions"] #ctaBand,body[data-page="successions"] footer { background:#193f36!important; }
+body[data-page="famille"] #ctaBand,body[data-page="famille"] footer { background:#7a3040!important; }
+body[data-page="entreprises"] #ctaBand,body[data-page="entreprises"] footer { background:#233848!important; }
+@media(max-width:1120px){
+ .help-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:680px){
+ .hero { padding-top:calc(var(--header-height) + 28px); padding-bottom:20px; }
+ .hero h1 { margin-bottom:18px; }
+ .hero .lead { font-size:1rem; line-height:1.7; margin-bottom:20px; }
+ .hero-cta { margin-bottom:20px; }
+ .hero-cta .btn { font-size:.87rem; }
+ .hero-details { gap:12px; }
+ .hero-location { font-size:.76rem; }
+ .hero .video-toggle { min-height:44px; font-size:.72rem; }
+ .help-panel { padding-top:28px; }
+ .help-card { padding:18px 14px; min-height:0; }
+ .help-card .ic { margin-bottom:10px; }
+ .help-card .hcs { font-size:1rem; line-height:1.5; }
+ .help-card .hct { font-size:1.35rem; }
+ .transmission { margin:24px 0 0; padding:20px; }
+ .transmission p { font-size:1rem; }
+ .sec { padding-block:36px; }
+ .sec-head { margin-bottom:24px; }
+ .sec-head p,.page-band .pb-sub,main .outil-desc,main .faq-a-inner { font-size:1rem; }
+ .page-band { padding-bottom:24px; }
+ body[data-view="rdv"] .page-band,body[data-view="contact"] .page-band { padding-top:calc(var(--header-height) + 24px)!important; }
+ body[data-view="rdv"] .page-band .pb-sub,body[data-view="contact"] .page-band .pb-sub { display:none; }
+ .rdv-grid { display:flex; flex-direction:column; }
+ .rdv-form { order:-1; }
+ .rdv-info,.rdv-form { padding:24px 18px; }
+ .rdv-form .fsub { font-size:1rem; }
+ .field label { font-size:.88rem; }
+ .f-aide,.f-rgpd { font-size:.94rem; }
+ .contact-actions .btn { width:100%; }
+ .map-placeholder { padding:24px 16px; }
+ .tools-group summary,.visio-details summary { padding:16px; }
+ .tools-group .outils-grid,.visio-content { padding:0 16px 16px; }
+ .foot-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 16px; }
+ .foot-grid .foot-brand,.foot-grid .foot-col:last-child { grid-column:1/-1; }
+ .foot-col a { font-size:.95rem; }
+ .foot-brand p { font-size:1rem; line-height:1.7; }
+ .foot-signature { display:none; }
+ .foot-badges { margin-block:16px; }
+ .foot-navline { gap:4px 16px; }
+ .foot-navline a { font-size:.88rem; }
+ .cta-band { padding:30px 0; }
+}
+@media(max-width:360px){
+ .help-grid { grid-template-columns:1fr; }
+ .hero-details { flex-wrap:wrap; }
+}

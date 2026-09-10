@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ══════════════════════════════════════════════════════════════
-  PLAN DU SITE — Office notarial Charlotte Diaz, Roanne
-  Créé le 09/09/2026 (recommandation de l'audit du 29/08/2026).
-
-  À quoi ça sert : c'est la table des matières que Google lit pour
-  savoir quelles pages existent. Le site est une page unique qui
-  défile, donc il n'y a qu'une seule adresse — c'est normal.
-
-  👉 LE JOUR DE LA NOMINATION :
-     1. remplacer l'adresse ci-dessous par le domaine définitif
-        (ex. https://diaz-roanne.notaires.fr/) ;
-     2. mettre à jour la date <lastmod> ;
-     3. déposer ce fichier dans Google Search Console.
-     Voir JOUR_J.md.
-  ══════════════════════════════════════════════════════════════
--->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://etude-charlotte-diaz.vercel.app/</loc>
-    <lastmod>2026-09-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://etude-charlotte-diaz.vercel.app/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://etude-charlotte-diaz.vercel.app/immobilier/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://etude-charlotte-diaz.vercel.app/successions/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://etude-charlotte-diaz.vercel.app/famille/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://etude-charlotte-diaz.vercel.app/entreprises/</loc><lastmod>2026-09-10</lastmod></url>
 </urlset>

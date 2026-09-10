@@ -65,6 +65,7 @@
 
   const video = document.querySelector('.hero-video');
   const videoButton = document.getElementById('videoToggle');
+  if (video && videoButton) {
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let userPaused = false;
   let userStarted = false;
@@ -100,8 +101,10 @@
   document.addEventListener('visibilitychange', syncVideo);
   document.addEventListener('viewchange', e => { home = e.detail === 'accueil'; syncVideo(); });
 
+  }
+
   const loadMap = document.getElementById('loadMap');
-  loadMap.addEventListener('click', () => {
+  loadMap?.addEventListener('click', () => {
     const frame = document.createElement('iframe');
     frame.title = "Plan d'accès — 5 rue Paul Bert, Roanne";
     frame.src = 'https://www.google.com/maps?q=5%20rue%20Paul%20Bert%2042300%20Roanne&output=embed';
@@ -114,6 +117,28 @@
 
   /* --- Navigation par onglets : chaque lien du menu affiche sa seule rubrique --- */
   (function(){
+
+    // Les pages métier sont de vrais documents HTML, compatibles avec les anciens liens.
+    var domainPages=['immobilier','successions','famille','entreprises'];
+    var staticPage=document.body.dataset.page;
+    if(location.protocol==='file:'){
+      document.querySelectorAll('a[href]').forEach(function(a){
+        var href=a.getAttribute('href');
+        if(domainPages.some(function(domain){return href===domain+'/'||href==='../'+domain+'/';}))a.setAttribute('href',href+'index.html');
+        else if(href.startsWith('../#'))a.setAttribute('href','../index.html'+href.slice(3));
+      });
+    }
+    if(staticPage){
+      document.dispatchEvent(new CustomEvent('viewchange',{detail:staticPage}));
+      return;
+    }
+    function redirectDomain(view){
+      if(!domainPages.includes(view))return false;
+      var target=new URL(view+'/',location.href);
+      if(location.protocol==='file:')target.pathname+='index.html';
+      location.replace(target.href);
+      return true;
+    }
     var originalTitle=document.title;
     var views={
       'accueil':['accueil','aide'],
@@ -125,8 +150,8 @@
       'entreprises':['entreprises'],
       'actualites':['actualites'],
       'outils':['outils'],
-      'contact':['rdv','visio','contact'],
-      'rdv':['rdv','visio','contact'],
+      'contact':['contact'],
+      'rdv':['rdv','visio'],
       'faq':['faq'],
       'mentions':['mentions']
     };
@@ -141,7 +166,8 @@
       'entreprises':{eyebrow:"Nos domaines",title:"Entreprises",sub:"De la création à la transmission",extra:'<div class="promo-pills" style="margin-top:1.6rem"><span class="promo-pill">Création de société</span><span class="promo-pill">SARL / SAS</span><span class="promo-pill">SCI</span><span class="promo-pill">Société d\'exercice libéral</span><span class="promo-pill">Protection de l\'entrepreneur</span><span class="promo-pill">Fonds de commerce</span><span class="promo-pill">Cession de titres sociaux</span><span class="promo-pill">Bail commercial</span><span class="promo-pill">Bail professionnel</span><span class="promo-pill">Location-gérance</span><span class="promo-pill">Transmission d\'entreprise</span><span class="promo-pill">Pacte Dutreil</span><span class="promo-pill">Opérations sur le capital</span><span class="promo-pill">Fusion &amp; dissolution</span></div>'},
       'actualites':{eyebrow:"L'Étude",title:"Actualités",sub:"Informations & vie de l'Étude"},
       'outils':{eyebrow:"Pratique",title:"Outils en ligne",sub:"Vos ressources, à portée de clic"},
-      'contact':{eyebrow:"Nous rencontrer",title:"Contact & rendez-vous",sub:"Prenons le temps d'en parler"},
+      'rdv':{title:"Demander un rendez-vous",sub:"Au bureau, par téléphone ou en visioconférence"},
+      'contact':{eyebrow:"Nous rencontrer",title:"Venir à l’Étude",sub:"Adresse, horaires et itinéraire"},
       'mentions':{eyebrow:"Informations",title:"Mentions légales",sub:"Informations légales et protection de vos données personnelles"}
     };
     var all=['accueil','aide','etude','histoire','immobilier','successions','famille','entreprises','actualites','faq','outils','rdv','visio','contact','mentions'];
@@ -188,7 +214,9 @@
       band.style.paddingTop='calc(var(--header-height) + 44px)';
     }
     function show(view, moveFocus){
-      var canonicalView=view==='rdv'?'contact':view;
+      if(redirectDomain(view))return;
+      var canonicalView=view;
+      document.body.dataset.view=view;
       document.title=titles[canonicalView]?titles[canonicalView].title+' — Me Charlotte Diaz, notaire à Roanne':originalTitle;
       var ids=views[view]||views['accueil'];
       all.forEach(function(id){
@@ -198,7 +226,7 @@
         else{el.classList.add('view-hidden');}
       });
       /* accorde le bas de page au ton de l'onglet */
-      var th=themes[canonicalView]||themes['accueil'];
+      var th=themes[canonicalView==='rdv'?'contact':canonicalView]||themes['accueil'];
       if(ctaBand){ctaBand.style.background=th.cta;}
       if(footerEl){footerEl.style.background=th.foot;}
       paint(canonicalView);
