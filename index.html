@@ -110,7 +110,12 @@ if(location.hash&&location.hash.length>1){
      chargé : le navigateur le fabriquait grossièrement, il est maintenant vrai. -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/experience.css">
+<!-- Couche de finition « beauté » — ajoutée le 09/09/2026.
+     Elle se charge en DERNIER : c'est donc elle qui a le dernier mot sur
+     l'apparence. Pour tout annuler, il suffit de supprimer ces deux lignes. -->
+<link rel="stylesheet" href="assets/beaute.css">
 <script src="assets/experience.js" defer></script>
+<script src="assets/beaute.js" defer></script>
 <meta name="theme-color" content="#193444">
 <link rel="stylesheet" href="assets/parcours.css"><script src="assets/contact.js" defer></script></head>
 <body>
@@ -172,17 +177,11 @@ if(location.hash&&location.hash.length>1){
 
 <!-- ░░░ HERO ░░░ -->
 <section class="hero" id="accueil">
-  <!-- Vidéo d'accueil : « la réunion entre partenaires », avec effet silhouettes (flou léger).
-       Choisie par Charlotte le 22/07/2026. L'ancienne (hero-notaire.mp4, signature au stylo)
-       reste dans assets/ — pour y revenir, il suffit de remettre son nom ci-dessous. -->
-  <!-- Version allégée du 09/09/2026 (audit) : la vidéo pesait 5,6 Mo, elle pèse
-       maintenant 482 Ko — soit onze fois moins à télécharger, pour une image
-       identique à l'œil (le site lui applique de toute façon un léger flou).
-       L'originale reste dans assets/hero-etude-reunion.mp4, rien n'est perdu.
-       L'image "poster" s'affiche instantanément le temps que la vidéo démarre. -->
-  <video id="heroVideo" class="hero-video hero-video-silhouettes" muted loop playsinline preload="none" poster="assets/hero-poster.jpg" aria-hidden="true">
-    <source data-src="assets/hero-etude-reunion-light.mp4" type="video/mp4">
-  </video>
+  <!-- Fond d'accueil : photo animée des archives (livres anciens), avec un lent zoom.
+       Choisie par Charlotte le 20/09/2026, à la place de la vidéo « réunion entre
+       partenaires » dont le contenu (un cadre trop moderne/coworking) ne collait pas
+       avec l'esprit de l'étude. Les vidéos restent dans assets/, rien n'est perdu. -->
+  <img class="hero-photo" src="assets/hist-archives.jpg" alt="" aria-hidden="true">
   <div class="hero-overlay"></div>
   <div class="wrap">
     <div class="hero-grid">
@@ -200,7 +199,6 @@ if(location.hash&&location.hash.length>1){
     </div>
     <div class="hero-details">
       <div class="hero-location"><strong>Maître Charlotte Diaz</strong><span>5 rue Paul Bert · Roanne</span><span>Successeur de Maître Yves Suchet</span></div>
-      <button type="button" class="video-toggle" id="videoToggle" aria-controls="heroVideo" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg><span>Lire la vidéo</span></button>
     </div>
   </div>
 </section>
@@ -299,7 +297,7 @@ if(location.hash&&location.hash.length>1){
                Reportés ici le 09/09/2026 : le site affichait encore 9h-18h,
                ce que l'audit avait signalé en rouge. La même version doit
                figurer sur la fiche Google et dans l'annuaire notaires.fr. -->
-          <div><div class="fl">Horaires</div><div class="fv">Lun – Ven · 10h – 12h et 14h – 17h<br><span style="font-size:.8rem;color:var(--ink-soft)">Fermé le mercredi après-midi</span></div></div>
+          <div><div class="fl">Accueil téléphonique</div><div class="fv">Lun – Ven · 10h – 12h et 14h – 17h<br><span style="font-size:.8rem;color:var(--ink-soft)">Fermé le mercredi après-midi</span></div></div>
         </div>
         <a data-route="rdv" href="#rdv" class="btn btn-primary btn-full" style="margin-top:1.1rem">Demander un rendez-vous</a>
       </div>
@@ -333,6 +331,41 @@ if(location.hash&&location.hash.length>1){
       <div class="eyebrow tab-dup" style="font-size:1.05rem;letter-spacing:.16em">Histoire de l'étude</div>
       <h2 class="tab-dup">Plus de quatre siècles de mémoire</h2>
       <p>Depuis plus de quatre siècles, l'Étude est au cœur de la vie des familles du Roannais. Ses archives, dont certaines sont antérieures à la Révolution française, témoignent de cette fidélité qui se transmet de génération en génération.</p>
+    </div>
+
+    <!-- ░░░ BANDEAU DES ARCHIVES DE 1595 ░░░ (ajouté le 09/09/2026)
+         Une bande pleine largeur, un vieux registre en fond, la date en grand.
+         Le fond est une photo déjà présente dans assets/ : rien de nouveau à télécharger.
+         Pour retirer ce bandeau : supprimer le bloc <div class="archives-band">…</div>. -->
+    <div class="archives-band">
+      <img loading="lazy" decoding="async" src="assets/hist-archives-new1.jpg" alt="" aria-hidden="true">
+      <div class="archives-inner">
+        <p class="archives-date">1595</p>
+        <div class="archives-filet" aria-hidden="true"></div>
+        <p class="archives-txt">Les plus anciennes minutes conservées par l'Étude.
+          <span class="archives-src">Archives de l'Étude · Roanne</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- ░░░ LES TROIS CHIFFRES ░░░ (ajouté le 09/09/2026)
+         Ils défilent de zéro jusqu'à leur valeur quand on arrive dessus.
+         La valeur est écrite dans data-valeur="…" — c'est le seul endroit à
+         changer si un chiffre doit être corrigé. Le texte visible sert de
+         secours si le script ne se lance pas. -->
+    <div class="chiffres">
+      <div class="chiffre">
+        <span class="chiffre-nb" data-valeur="1595">1595</span>
+        <span class="chiffre-lb">Les plus anciennes<br>minutes conservées</span>
+      </div>
+      <div class="chiffre">
+        <span class="chiffre-nb" data-valeur="431">431</span>
+        <span class="chiffre-lb">Années de mémoire<br>notariale</span>
+      </div>
+      <div class="chiffre">
+        <span class="chiffre-nb" data-valeur="1987">1987</span>
+        <span class="chiffre-lb">La réunion des<br>deux études</span>
+      </div>
     </div>
 
 
@@ -395,6 +428,15 @@ if(location.hash&&location.hash.length>1){
     </div>
 
     <p class="reveal" style="color:var(--brass-deep);font-style:italic;font-size:1.05rem;max-width:680px;margin:3rem auto 2rem;text-align:center">L'Étude conserve également les minutes de Mes Deveaulx, Gagnier, Moulin, Royer, Thévenard, Coton, Plassier, Namur et Vialon.</p>
+
+    <!-- ░░░ LA PHRASE MANUSCRITE ░░░ (ajoutée le 09/09/2026)
+         Une seule phrase, écrite à la plume, au milieu de beaucoup de vide.
+         C'est le silence autour qui la rend belle — ne pas la rallonger.
+         Le texte est repris mot pour mot du paragraphe d'introduction. -->
+    <div class="manuscrit">
+      <p>Dépositaire d'une mémoire<br>qui dépasse une seule génération.</p>
+      <span class="manuscrit-signe">L'Étude — depuis 1595</span>
+    </div>
 
     <div class="hist-fusion reveal" style="margin-top:3.2rem">
       <h3>Ancrée dans l'histoire, tournée vers l'avenir</h3>
