@@ -1,0 +1,25 @@
+/* Bandeau de cookies — ajouté le 21/09/2026, exigé par la Chambre.
+   Fichier séparé, comme beaute.css et parcours.css : pour l'enlever,
+   il suffit de retirer la ligne qui le charge dans index.html. */
+
+.cookie-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:9999;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1rem;
+  background:var(--ink);color:var(--cream);
+  padding:.9rem 1.4rem;
+  box-shadow:var(--shadow-lg);
+}
+.cookie-bar p{margin:0;font-size:.85rem;color:var(--cream);max-width:640px;line-height:1.5}
+.cookie-bar a{color:var(--brass-light)}
+.cookie-bar button{
+  flex-shrink:0;
+  background:var(--brass-light);color:var(--ink);
+  border:none;border-radius:30px;
+  padding:.6rem 1.4rem;font-size:.8rem;font-weight:700;
+  font-family:var(--sans);cursor:pointer;
+  transition:transform .2s ease;
+}
+.cookie-bar button:hover{transform:translateY(-2px)}
+@media (max-width:600px){
+  .cookie-bar{flex-direction:column;text-align:center}
+}
