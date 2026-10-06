@@ -9,6 +9,9 @@
   padding:.9rem 1.4rem;
   box-shadow:var(--shadow-lg);
 }
+/* Indispensable : sans cette ligne, le "display:flex" ci-dessus l'emporte sur
+   l'attribut "hidden", et le bandeau ne disparaît jamais (corrigé le 06/10/2026). */
+.cookie-bar[hidden]{display:none}
 .cookie-bar p{margin:0;font-size:.85rem;color:var(--cream);max-width:640px;line-height:1.5}
 .cookie-bar a{color:var(--brass-light)}
 .cookie-bar button{
