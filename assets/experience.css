@@ -51,8 +51,8 @@ nav.links .btn-primary { color: #fff; font-family: var(--sans); font-size: .76re
 .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .burger[aria-expanded="true"] span:last-child { transform: translateY(-7px) rotate(-45deg); }
 
-/* Accueil : une lecture plus aérée, avec la vidéo choisie pour l'Étude. */
-.hero { padding: calc(var(--header-height) + 78px) 0 32px; min-height: 690px; background: #14232f url('hero-poster.jpg') center / cover; }
+/* Accueil : une lecture plus aérée, avec la photo animée choisie pour l'Étude (20/09/2026). */
+.hero { padding: calc(var(--header-height) + 78px) 0 32px; min-height: 690px; background: #14232f url('hist-archives.jpg') center / cover; }
 .hero-overlay { background: linear-gradient(90deg, rgba(13,26,37,.94), rgba(13,26,37,.75) 48%, rgba(13,26,37,.28)), linear-gradient(0deg,rgba(13,26,37,.6),transparent 60%); }
 .hero-video-silhouettes { filter: blur(5px) brightness(.88) saturate(.75); }
 .hero-kicker { display: flex; align-items: center; gap: 14px; color: #e4cba7; text-transform: uppercase; letter-spacing: .22em; font-size: .72rem; font-weight: 700; margin-bottom: 24px; }
