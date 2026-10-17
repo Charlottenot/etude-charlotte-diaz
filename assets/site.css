@@ -389,6 +389,33 @@
     .alerte-fraude-titre{font-size:1.18rem}
     .alerte-fraude p{font-size:1rem}
   }
+  /* ---------- VENDRE A ROANNE : DEMARCHES LOCALES (17/10/2026) ---------- */
+  /* Page Immobilier, sous « Vous vendez ». Meme famille que l encart Suchet. */
+  .demarches-locales{
+    margin:2.2rem 0 0;padding:1.8rem 2.2rem;
+    background:var(--cream);border:1px solid var(--line);
+    border-left:3px solid var(--brass);border-radius:var(--r);
+    box-shadow:var(--shadow-sm);
+  }
+  .demarches-locales-titre{
+    font-family:var(--serif);font-size:1.4rem;font-weight:600;
+    color:var(--ink);margin:0 0 1rem;line-height:1.3;
+  }
+  .demarches-locales h4{font-family:var(--sans);font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .35rem;line-height:1.4}
+  .demarches-locales-titre + h4{margin-top:0}
+  .demarches-locales p{color:var(--ink-soft);font-size:.99rem;line-height:1.75;margin:0}
+  .demarches-locales-lien{
+    display:inline-block;margin-top:.6rem;
+    color:var(--brass-deep);font-weight:600;font-size:.92rem;line-height:1.6;
+    text-decoration:underline;text-underline-offset:3px;
+  }
+  .demarches-locales-lien svg{width:14px;height:14px;margin-left:.3rem;vertical-align:-2px}
+  .demarches-locales p.demarches-locales-date{font-size:.82rem;font-style:italic;margin-top:1.3rem}
+  @media(max-width:680px){
+    .demarches-locales{padding:1.4rem}
+    .demarches-locales-titre{font-size:1.2rem}
+    .demarches-locales p{font-size:1rem}
+  }
 
   .news-cat{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:.7rem}
   .news-body h3{font-size:1.32rem;line-height:1.15;margin-bottom:.7rem}
