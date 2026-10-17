@@ -1,19 +1,16 @@
 # ══════════════════════════════════════════════════════════════
 # Office notarial Charlotte Diaz — Roanne
 #
-# ÉTAT ACTUEL : PORTE FERMÉE (phase de relecture privée)
-# Les moteurs de recherche sont priés de ne rien référencer.
+# ÉTAT ACTUEL : PORTE OUVERTE (depuis le 17/10/2026)
+# Les moteurs de recherche peuvent lire et référencer tout le site.
 #
-# 👉 LE JOUR DE LA NOMINATION : voir JOUR_J.md
-#    (il faudra remplacer "Disallow: /" par "Disallow:" — la ligne
-#     vide qui veut dire « rien n'est interdit »)
-#    ATTENTION : ce verrou-ci ne suffit pas seul. Il faut AUSSI
-#    changer la balise "robots" dans index.html. Les deux ensemble.
+# La ligne "Disallow:" laissée vide veut dire « rien n'est interdit ».
+# Ce réglage va avec la balise "robots" en "index, follow" dans les
+# cinq pages du site. Les deux ensemble. Voir JOUR_J.md.
 # ══════════════════════════════════════════════════════════════
 
 User-agent: *
-Disallow: /
+Disallow:
 
-# Plan du site (créé le 09/09/2026). Il sera lu par Google
-# le jour où la porte ci-dessus sera ouverte.
+# Plan du site (créé le 09/09/2026).
 Sitemap: https://etude-charlotte-diaz.vercel.app/sitemap.xml
