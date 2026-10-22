@@ -1,9 +1,9 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/:path(.*)",
       "has": [{ "type": "host", "value": "etude-charlotte-diaz.vercel.app" }],
-      "destination": "https://www.diaz-roanne.notaires.fr/:path*",
+      "destination": "https://www.diaz-roanne.notaires.fr/:path",
       "permanent": true
     }
   ]
