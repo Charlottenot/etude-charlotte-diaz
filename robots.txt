@@ -13,4 +13,4 @@ User-agent: *
 Disallow:
 
 # Plan du site (créé le 09/09/2026).
-Sitemap: https://etude-charlotte-diaz.vercel.app/sitemap.xml
+Sitemap: https://www.diaz-roanne.notaires.fr/sitemap.xml
